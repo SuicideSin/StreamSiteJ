@@ -1,0 +1,25 @@
+group 'com.rolandoislas'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "io.webfolder:ui4j-webkit:3.1.0"
+    compile "org.testfx:openjfx-monocle:8u76-b04"
+    compile "net.bramp.ffmpeg:ffmpeg:0.6.2"
+    compile "org.jetbrains:annotations:15.0"
+    compile "org.slf4j:slf4j-simple:1.7.25"
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.rolandoislas.streamsitej.StreamSite"
+    }
+    from {configurations.compile.collect {zipTree(it)}}
+}
